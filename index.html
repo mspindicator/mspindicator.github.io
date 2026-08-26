@@ -452,6 +452,10 @@ footer {
 </footer>
 
 <script>
+// ---------- Supabase config ----------
+const SUPABASE_URL = 'https://eyvjziprpirzahyuclqy.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5dmp6aXBycGlyemFoeXVjbHF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MzY0MzEsImV4cCI6MjEwMzMxMjQzMX0.kKtFrmfp35N48TGamCaJ_YesnkPow5051Km_OhzMy1U';
+
 // ---------- Storage helpers ----------
 async function getPromo() {
   try {
@@ -577,10 +581,6 @@ starButtons.forEach(btn => {
 function starString(n) {
   return '★★★★★☆☆☆☆☆'.slice(5 - n, 10 - n);
 }
-
-// ---------- Supabase config ----------
-const SUPABASE_URL = 'https://eyvjziprpirzahyuclqy.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5dmp6aXBycGlyemFoeXVjbHF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MzY0MzEsImV4cCI6MjEwMzMxMjQzMX0.kKtFrmfp35N48TGamCaJ_YesnkPow5051Km_OhzMy1U';
 
 async function loadReviews() {
   const grid = document.getElementById('reviewGrid');
