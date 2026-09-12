@@ -72,7 +72,6 @@ h1 .accent { color: var(--buy); }
 .sub {
   font-size: 17px; color: var(--muted); max-width: 480px; margin-top: 20px;
 }
-.hero-cta { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; align-items: center; }
 .btn {
   position: relative;
   font-family: var(--mono); font-weight: 600; font-size: 13px;
@@ -170,61 +169,6 @@ h2 {
 .toggle input:checked + .toggle-slider::before { background: var(--buy); transform: translateX(16px); }
 .admin-save { font-family: var(--mono); font-size: 12px; background: var(--ink); color: var(--paper); border: none; padding: 8px 16px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
-.pending-list { display: flex; flex-direction: column; gap: 12px; }
-.pending-item { border: 1px solid var(--ink); padding: 12px 14px; }
-.pending-item-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.pending-item-name { font-family: var(--mono); font-weight: 600; font-size: 12px; }
-.pending-item-stars { color: var(--stamp); font-size: 12px; }
-.pending-item-text { font-size: 13px; color: var(--ink); margin-bottom: 10px; line-height: 1.5; }
-.pending-item-actions { display: flex; gap: 8px; }
-.pending-item-actions button {
-  font-family: var(--mono); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-  border: 1px solid var(--ink); padding: 6px 12px; cursor: pointer; background: var(--paper); color: var(--ink);
-}
-.pending-item-actions .approve-btn:hover { background: var(--buy); }
-.pending-item-actions .reject-btn:hover { background: var(--sell); color: var(--paper); border-color: var(--sell); }
-.pending-empty { color: var(--muted); font-family: var(--mono); font-size: 12px; }
-
-/* REVIEWS */
-.review-summary { display: flex; align-items: center; gap: 28px; margin-bottom: 36px; flex-wrap: wrap; border: 1px solid var(--ink); padding: 20px 24px; max-width: 560px; }
-.review-score { font-family: var(--mono); font-size: 40px; font-weight: 600; }
-.stars { color: var(--stamp); font-size: 16px; letter-spacing: 2px; }
-.review-count { color: var(--muted); font-size: 13px; font-family: var(--mono); }
-.review-dist { flex: 1; min-width: 180px; }
-.review-dist-label { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--buy); margin-bottom: 8px; }
-.review-dist-bars { display: flex; flex-direction: column; gap: 4px; }
-.review-dist-row { display: flex; align-items: center; gap: 8px; }
-.review-dist-row span { font-family: var(--mono); font-size: 11px; color: var(--muted); width: 10px; }
-.review-dist-track { flex: 1; height: 6px; background: var(--grid); }
-.review-dist-fill { height: 100%; background: var(--stamp); }
-
-.review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; }
-@media (max-width: 780px) { .review-grid { grid-template-columns: 1fr; } }
-.review-card { background: #F3F4F6; border-radius: 14px; padding: 18px; }
-.review-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.review-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--mono); font-weight: 600; font-size: 12px; color: #fff; background-size: cover; background-position: center; }
-.review-avatar.no-photo-fallback { background: #fff; color: var(--muted); font-size: 16px; }
-.review-name-wrap { flex: 1; }
-.review-name { font-weight: 600; font-size: 13.5px; display: block; }
-.review-date { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
-.review-stars { color: var(--stamp); font-size: 11px; letter-spacing: 1px; }
-.review-text { font-size: 13px; color: var(--muted); line-height: 1.55; }
-.empty-state { grid-column: 1 / -1; color: var(--muted); font-size: 14px; padding: 24px; border: 1px dashed var(--ink); text-align: center; font-family: var(--mono); }
-
-.review-form {
-  background: var(--paper); border: 2px solid var(--ink); padding: 30px; max-width: 560px;
-}
-.review-form h3 { font-family: var(--display); font-size: 20px; margin-bottom: 18px; text-transform: uppercase; }
-.field { margin-bottom: 16px; }
-.field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 7px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
-.field input, .field textarea {
-  width: 100%; background: var(--paper); border: 1px solid var(--ink); color: var(--ink);
-  padding: 11px 13px; font-family: var(--body); font-size: 14px; resize: vertical;
-}
-.field input:focus, .field textarea:focus { outline: 2px solid var(--buy); outline-offset: 1px; }
-.star-input { display: flex; gap: 6px; font-size: 22px; }
-.star-input button { background: none; border: none; cursor: pointer; color: var(--grid); padding: 0; }
-.star-input button.active { color: var(--stamp); }
 .form-msg { font-size: 13px; margin-top: 12px; display: none; font-family: var(--mono); }
 .form-msg.success { color: var(--buy); display: block; }
 .form-msg.error { color: var(--sell); display: block; }
@@ -241,12 +185,14 @@ h2 {
 .access-step h4 { font-family: var(--display); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 2px; }
 .access-step p { color: var(--muted); font-size: 13px; line-height: 1.5; }
 
-.policy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.policy-grid-single { grid-template-columns: 1fr; max-width: 480px; }
-@media (max-width: 780px) { .policy-grid { grid-template-columns: 1fr; } }
-.policy-block { border: 1.5px solid var(--ink); border-radius: 14px; padding: 26px; }
-.policy-block h3 { font-family: var(--display); font-size: 19px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: -0.01em; }
-.policy-block p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.faq-list { margin-top: 24px; max-width: 640px; }
+.faq-item { border-bottom: 1px solid var(--ink); padding: 16px 0; }
+.faq-item:first-child { border-top: 1px solid var(--ink); }
+.faq-item summary { cursor: pointer; font-weight: 600; font-size: 14.5px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-family: var(--mono); font-size: 18px; color: var(--muted); }
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { color: var(--muted); font-size: 13.5px; line-height: 1.6; margin-top: 10px; }
 
 footer {
   padding: 32px 0; text-align: center; color: var(--muted); font-size: 12px;
@@ -273,7 +219,7 @@ footer {
     <div class="nav-links">
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
-      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
     </div>
   </nav>
 </div>
@@ -283,10 +229,6 @@ footer {
     <div class="eyebrow">Pine Script · TradingView Indicator</div>
     <h1>A signal for <span class="accent">the next candle.</span> Every time.</h1>
     <p class="sub">Open your chart before any candle forms and MSP gives you a call on it — buy or sell — with the lot size and risk to reward worked out for you before it even opens.</p>
-    <div class="hero-cta">
-      <button class="btn btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Get MSP — $200</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('reviews').scrollIntoView({behavior:'smooth'})">Read reviews</button>
-    </div>
   </section>
 </div>
 
@@ -366,11 +308,6 @@ footer {
       <div class="form-msg success" id="promoMsg">Saved. This is now live for every visitor.</div>
     </div>
 
-    <div class="admin-panel" id="adminPanel2" style="display:none;">
-      <h4>Pending reviews (only you see this)</h4>
-      <div id="pendingList" class="pending-list"></div>
-    </div>
-
     <div class="access-steps">
       <div class="access-step">
         <div class="access-num">1</div>
@@ -398,67 +335,32 @@ footer {
 </div>
 
 <div class="wrap">
-  <section id="reviews" style="border-bottom:none;">
+  <section id="faq">
     <div class="section-head">
       <div class="section-num">03</div>
-      <h2>What traders using MSP say.</h2>
+      <h2>Questions.</h2>
     </div>
-
-    <div class="review-summary">
-      <div class="review-score" id="avgScore">—</div>
-      <div>
-        <div class="stars" id="avgStars">☆☆☆☆☆</div>
-        <div class="review-count" id="reviewCount">No reviews yet</div>
-      </div>
-      <div class="review-dist" id="reviewDist" style="display:none;">
-        <div class="review-dist-label" id="reviewDistLabel"></div>
-        <div class="review-dist-bars" id="reviewDistBars"></div>
-      </div>
-    </div>
-
-    <div class="review-grid" id="reviewGrid"></div>
-
-    <div class="review-form">
-      <h3>Leave your review</h3>
-      <div class="field">
-        <label>Your name</label>
-        <input type="text" id="rName" placeholder="e.g. Kwame A.">
-      </div>
-      <div class="field">
-        <label>Rating</label>
-        <div class="star-input" id="starInput">
-          <button type="button" data-v="1">★</button>
-          <button type="button" data-v="2">★</button>
-          <button type="button" data-v="3">★</button>
-          <button type="button" data-v="4">★</button>
-          <button type="button" data-v="5">★</button>
-        </div>
-      </div>
-      <div class="field">
-        <label>Your review</label>
-        <textarea id="rText" rows="4" placeholder="How has MSP worked for you?"></textarea>
-      </div>
-      <div class="field">
-        <label>Photo (optional)</label>
-        <input type="file" id="rPhoto" accept="image/png,image/jpeg,image/webp">
-      </div>
-      <button class="btn btn-primary" onclick="submitReview()">Submit review</button>
-      <div class="form-msg" id="formMsg"></div>
-    </div>
-  </section>
-</div>
-
-<div class="wrap">
-  <section id="policy">
-    <div class="section-head">
-      <div class="section-num">04</div>
-      <h2>Support.</h2>
-    </div>
-    <div class="policy-grid policy-grid-single">
-      <div class="policy-block">
-        <h3>Support</h3>
-        <p>Installation help, questions about signals, or access issues — reach out any time at the contact below and we'll get back to you, usually within a day.</p>
-      </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Which timeframes does MSP work on?</summary>
+        <p>Any timeframe — 1 minute, 5 minute, 1 hour, daily, whatever chart you're on. Just open your chart shortly before the next candle forms and MSP gives you a call for it.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need a paid TradingView plan?</summary>
+        <p>No. MSP is a Pine Script you paste into TradingView's Pine Editor, which is available on the free plan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I get MSP after I pay?</summary>
+        <p>After payment you're redirected to a download page with the script and simple copy-paste instructions into your Pine Editor. No waiting on manual delivery.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use it on more than one chart or device?</summary>
+        <p>Yes — since it's a script tied to your own TradingView account, it works on any device you're logged into and on as many charts as you like.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if I run into an issue?</summary>
+        <p>Email the address below with what you're seeing. Most questions get a reply within a day.</p>
+      </details>
     </div>
   </section>
 </div>
@@ -466,7 +368,7 @@ footer {
 <footer>
   <div class="disclaimer">MSP provides signals for informational and educational purposes only and is not financial advice. Trading involves risk, and past or hypothetical performance does not guarantee future results. You are solely responsible for your own trading decisions.</div>
   <div>MSP · A Pine Script indicator for TradingView</div>
-  <div class="footer-links"><a href="#">Terms of service</a><span>·</span><a href="#">Privacy policy</a><span>·</span><a href="mailto:mjonat669@gmail.com">Contact support</a></div>
+  <div class="footer-links"><a href="#">Terms of service</a><span>·</span><a href="#">Privacy policy</a><span>·</span><a href="mailto:mspindicator.support@gmail.com">Contact support</a></div>
 </footer>
 
 <script>
@@ -538,167 +440,11 @@ async function savePromo() {
 const isAdmin = new URLSearchParams(window.location.search).get('admin') === '1';
 if (isAdmin) {
   document.getElementById('adminPanel').style.display = 'block';
-  document.getElementById('adminPanel2').style.display = 'block';
-  loadPendingReviews();
 }
 applyPromo();
 
-async function loadPendingReviews() {
-  const list = document.getElementById('pendingList');
-  list.innerHTML = '<div class="pending-empty">Loading…</div>';
-  try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/reviews?select=id,name,text,rating,date,photo_url&approved=eq.false&order=date.desc`,
-      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) throw new Error('fetch failed');
-    const pending = await res.json();
-    if (!pending.length) {
-      list.innerHTML = '<div class="pending-empty">No reviews waiting for approval.</div>';
-      return;
-    }
-    list.innerHTML = pending.map(rv => `
-      <div class="pending-item" data-id="${rv.id}">
-        <div class="pending-item-head">
-          <span class="pending-item-name">${escapeHtml(rv.name)}</span>
-          <span class="pending-item-stars">${starString(rv.rating)}</span>
-        </div>
-        ${rv.photo_url ? `<img src="${escapeHtml(rv.photo_url)}" style="width:56px;height:56px;border-radius:8px;object-fit:cover;margin-bottom:8px;display:block;">` : ''}
-        <div class="pending-item-text">${escapeHtml(rv.text)}</div>
-        <div class="pending-item-actions">
-          <button class="approve-btn" onclick="moderateReview('${rv.id}', true)">Approve</button>
-          <button class="reject-btn" onclick="moderateReview('${rv.id}', false)">Reject</button>
-        </div>
-      </div>
-    `).join('');
-  } catch (e) {
-    list.innerHTML = '<div class="pending-empty">Could not load pending reviews.</div>';
-  }
-}
-
-async function moderateReview(id, approve) {
-  try {
-    if (approve) {
-      await fetch(`${SUPABASE_URL}/rest/v1/reviews?id=eq.${id}`, {
-        method: 'PATCH',
-        headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-          'Content-Type': 'application/json',
-          Prefer: 'return=minimal'
-        },
-        body: JSON.stringify({ approved: true })
-      });
-    } else {
-      await fetch(`${SUPABASE_URL}/rest/v1/reviews?id=eq.${id}`, {
-        method: 'DELETE',
-        headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
-      });
-    }
-    loadPendingReviews();
-    loadReviews();
-  } catch (e) {
-    console.error('Could not moderate review', e);
-  }
-}
-
-// ---------- Reviews ----------
-let selectedStars = 0;
-const starButtons = document.querySelectorAll('#starInput button');
-starButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    selectedStars = parseInt(btn.dataset.v, 10);
-    starButtons.forEach(b => b.classList.toggle('active', parseInt(b.dataset.v, 10) <= selectedStars));
-  });
-});
-
 function starString(n) {
   return '★★★★★☆☆☆☆☆'.slice(5 - n, 10 - n);
-}
-
-const AVATAR_COLORS = ['#1D3B8C', '#0F7A4D', '#B23A34', '#5B6470'];
-function initials(name) {
-  return name.trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
-}
-function avatarHtml(rv) {
-  if (rv.photo_url) {
-    return `<div class="review-avatar" style="background-image:url('${escapeHtml(rv.photo_url)}')"></div>`;
-  }
-  const color = AVATAR_COLORS[Math.abs(hashCode(rv.name)) % AVATAR_COLORS.length];
-  return `<div class="review-avatar" style="background:${color}">${escapeHtml(initials(rv.name))}</div>`;
-}
-function hashCode(str) {
-  let h = 0;
-  for (let i = 0; i < str.length; i++) { h = (h << 5) - h + str.charCodeAt(i); h |= 0; }
-  return h;
-}
-function ratingLabel(avg) {
-  if (avg >= 4.5) return 'Excellent';
-  if (avg >= 3.5) return 'Great';
-  if (avg >= 2.5) return 'Average';
-  return 'Needs work';
-}
-
-async function loadReviews() {
-  const grid = document.getElementById('reviewGrid');
-  grid.innerHTML = '<div class="empty-state">Loading reviews…</div>';
-  let reviews = [];
-  try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/reviews?select=name,text,rating,date,photo_url&approved=eq.true&order=date.desc`,
-      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) throw new Error('fetch failed');
-    reviews = await res.json();
-  } catch (e) { reviews = []; }
-
-  if (!reviews.length) {
-    grid.innerHTML = '<div class="empty-state">No reviews yet — be the first to leave one.</div>';
-    document.getElementById('avgScore').textContent = '—';
-    document.getElementById('avgStars').textContent = '☆☆☆☆☆';
-    document.getElementById('reviewCount').textContent = 'No reviews yet';
-    document.getElementById('reviewDist').style.display = 'none';
-    return;
-  }
-  reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const MAX_SHOWN = 10;
-  const shown = reviews.slice(0, MAX_SHOWN);
-  const extra = reviews.length - shown.length;
-
-  grid.innerHTML = shown.map(rv => `
-    <div class="review-card">
-      <div class="review-card-head">
-        ${avatarHtml(rv)}
-        <div class="review-name-wrap">
-          <span class="review-name">${escapeHtml(rv.name)}</span>
-          <div class="review-stars">${starString(rv.rating)}</div>
-        </div>
-        <span class="review-date">${escapeHtml(rv.date)}</span>
-      </div>
-      <div class="review-text">${escapeHtml(rv.text)}</div>
-    </div>
-  `).join('');
-
-  // Average is calculated across ALL reviews, not just the ones shown —
-  // reviews beyond the top 10 still count toward the star score.
-  const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
-  document.getElementById('avgScore').textContent = avg.toFixed(1);
-  document.getElementById('avgStars').textContent = starString(Math.round(avg));
-  document.getElementById('reviewCount').textContent = reviews.length + (reviews.length === 1 ? ' review' : ' reviews')
-    + (extra > 0 ? ` · showing ${shown.length} most recent` : '');
-
-  const counts = [0, 0, 0, 0, 0];
-  reviews.forEach(r => { const idx = Math.min(5, Math.max(1, Math.round(r.rating))) - 1; counts[idx]++; });
-  const max = Math.max(...counts, 1);
-  const distEl = document.getElementById('reviewDist');
-  distEl.style.display = 'block';
-  document.getElementById('reviewDistLabel').textContent = ratingLabel(avg);
-  document.getElementById('reviewDistBars').innerHTML = [5, 4, 3, 2, 1].map(star => {
-    const c = counts[star - 1];
-    const pct = Math.round((c / max) * 100);
-    return `<div class="review-dist-row"><span>${star}</span><div class="review-dist-track"><div class="review-dist-fill" style="width:${pct}%"></div></div></div>`;
-  }).join('');
 }
 
 function escapeHtml(str) {
@@ -706,84 +452,6 @@ function escapeHtml(str) {
   div.textContent = str || '';
   return div.innerHTML;
 }
-
-async function submitReview() {
-  const name = document.getElementById('rName').value.trim();
-  const text = document.getElementById('rText').value.trim();
-  const photoInput = document.getElementById('rPhoto');
-  const photoFile = photoInput.files[0];
-  const msg = document.getElementById('formMsg');
-
-  if (!name || !text || selectedStars === 0) {
-    msg.textContent = 'Please add your name, a rating, and a short review.';
-    msg.className = 'form-msg error';
-    return;
-  }
-
-  msg.textContent = 'Submitting…';
-  msg.className = 'form-msg';
-
-  let photo_url = null;
-  if (photoFile) {
-    if (photoFile.size > 5 * 1024 * 1024) {
-      msg.textContent = 'Photo is too large — please use one under 5MB.';
-      msg.className = 'form-msg error';
-      return;
-    }
-    try {
-      const ext = photoFile.name.split('.').pop();
-      const path = `review-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-      const uploadRes = await fetch(`${SUPABASE_URL}/storage/v1/object/review-photos/${path}`, {
-        method: 'POST',
-        headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-          'Content-Type': photoFile.type
-        },
-        body: photoFile
-      });
-      if (!uploadRes.ok) throw new Error('upload failed');
-      photo_url = `${SUPABASE_URL}/storage/v1/object/public/review-photos/${path}`;
-    } catch (e) {
-      msg.textContent = 'Could not upload photo — try again or submit without one.';
-      msg.className = 'form-msg error';
-      return;
-    }
-  }
-
-  const review = {
-    name, text, rating: selectedStars,
-    date: new Date().toISOString().slice(0, 10),
-    approved: false, photo_url
-  };
-
-  try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-        Prefer: 'return=minimal'
-      },
-      body: JSON.stringify(review)
-    });
-    if (!res.ok) throw new Error('save failed');
-    msg.textContent = 'Thanks — your review has been submitted for approval.';
-    msg.className = 'form-msg success';
-    document.getElementById('rName').value = '';
-    document.getElementById('rText').value = '';
-    photoInput.value = '';
-    selectedStars = 0;
-    starButtons.forEach(b => b.classList.remove('active'));
-    loadReviews();
-  } catch (e) {
-    msg.textContent = 'Something went wrong saving your review — please try again.';
-    msg.className = 'form-msg error';
-  }
-}
-
-loadReviews();
 </script>
 
 </body>
