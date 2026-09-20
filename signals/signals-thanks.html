@@ -88,7 +88,7 @@ footer a { color: inherit; }
   <div class="eyebrow">Step 2 of 2</div>
   <h1>One click <span class="accent">and you're set.</span></h1>
   <p class="sub">Thanks for your purchase. Tap below and allow notifications when your browser asks — that's the last step before signals start arriving.</p>
-  <button class="btn" id="enableBtn">Turn on notifications</button>
+  <button class="btn" id="enableBtn" disabled>Loading…</button>
   <div class="status" id="status"></div>
 </div>
 
@@ -100,10 +100,22 @@ footer a { color: inherit; }
   const enableBtn = document.getElementById('enableBtn');
   const statusEl = document.getElementById('status');
 
+  // Safety net: if the SDK hasn't loaded within 8s, tell the user instead of leaving it stuck
+  const loadTimeout = setTimeout(function() {
+    if (enableBtn.hasAttribute('disabled') && enableBtn.textContent === 'Loading…') {
+      statusEl.textContent = 'Taking longer than expected — try refreshing the page.';
+    }
+  }, 8000);
+
   OneSignalDeferred.push(async function(OneSignal) {
+    clearTimeout(loadTimeout);
     await OneSignal.init({
       appId: "a05dbec7-b117-4759-b591-cd236c94720f",
     });
+
+    // SDK is ready — enable the button now
+    enableBtn.removeAttribute('disabled');
+    enableBtn.textContent = "Turn on notifications";
 
     // If already subscribed, reflect that immediately
     const isSubscribed = OneSignal.User.PushSubscription.optedIn;
