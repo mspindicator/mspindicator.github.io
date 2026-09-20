@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Turn on push notifications to start receiving MSP Signals.">
+<title>Turn On Notifications — MSP Signals</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #FFFFFF;
+  --ink: #14181D;
+  --muted: #5B6470;
+  --grid: #F3F4F6;
+  --buy: #0F7A4D;
+  --display: 'Big Shoulders Display', sans-serif;
+  --body: 'IBM Plex Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrap { max-width: 560px; margin: 0 auto; padding: 40px 24px; text-align: center; }
+
+.eyebrow {
+  font-family: var(--mono); font-size: 12px; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px;
+  display: inline-block; border: 1px solid var(--ink); padding: 5px 10px;
+}
+h1 {
+  font-family: var(--display); font-size: clamp(32px, 7vw, 52px);
+  font-weight: 800; line-height: 1; letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+h1 .accent { color: var(--buy); }
+.sub {
+  font-size: 16px; color: var(--muted); margin-top: 18px; max-width: 440px; margin-left: auto; margin-right: auto;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-weight: 600; font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 15px 26px; border: 2px solid var(--ink); border-radius: 10px; cursor: pointer;
+  background: var(--buy); color: var(--ink);
+  transition: transform 0.15s cubic-bezier(.2,.8,.3,1.4), box-shadow 0.15s ease;
+  box-shadow: 4px 4px 0 var(--ink);
+  text-decoration: none;
+  margin-top: 32px;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+.btn[disabled] { opacity: 0.5; cursor: default; pointer-events: none; }
+
+.status {
+  margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted);
+  min-height: 20px;
+}
+.status.success { color: var(--buy); font-weight: 600; }
+
+footer { position: fixed; bottom: 24px; left: 0; right: 0; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="eyebrow">Step 2 of 2</div>
+  <h1>One click <span class="accent">and you're set.</span></h1>
+  <p class="sub">Thanks for your purchase. Tap below and allow notifications when your browser asks — that's the last step before signals start arriving.</p>
+  <button class="btn" id="enableBtn">Turn on notifications</button>
+  <div class="status" id="status"></div>
+</div>
+
+<footer>Trouble with this step? <a href="mailto:mspindicator.support@gmail.com">Contact support</a></footer>
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  const enableBtn = document.getElementById('enableBtn');
+  const statusEl = document.getElementById('status');
+
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "a05dbec7-b117-4759-b591-cd236c94720f",
+    });
+
+    // If already subscribed, reflect that immediately
+    const isSubscribed = OneSignal.User.PushSubscription.optedIn;
+    if (isSubscribed) {
+      statusEl.textContent = "You're all set — notifications are on.";
+      statusEl.classList.add('success');
+      enableBtn.textContent = "Notifications enabled";
+      enableBtn.setAttribute('disabled', 'true');
+    }
+
+    enableBtn.addEventListener('click', async function() {
+      statusEl.textContent = 'Requesting permission…';
+      try {
+        await OneSignal.Notifications.requestPermission();
+        const granted = OneSignal.Notifications.permission;
+        if (granted) {
+          await OneSignal.User.addTag('paid', 'true');
+          statusEl.textContent = "You're all set — notifications are on.";
+          statusEl.classList.add('success');
+          enableBtn.textContent = "Notifications enabled";
+          enableBtn.setAttribute('disabled', 'true');
+        } else {
+          statusEl.textContent = 'Notifications were blocked — check your browser settings to enable them.';
+        }
+      } catch (e) {
+        statusEl.textContent = 'Something went wrong — please try again or contact support.';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
